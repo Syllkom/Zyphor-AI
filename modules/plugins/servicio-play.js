@@ -17,12 +17,12 @@ command.script = async (m, { conn }) => {
       }
       const { title, thumbnail, timestamp, ago, views, url } = videos[0]
 
-      let texto = `╭╼◯ \`\`\`Zp - Play\`\`\``
+      let texto = `╭╼◯ \`\`\`Zp - Play\`\`\`\n`
       texto += `│ *Publicado:* ${ago}\n`
       texto += `│ *Duración:* ${timestamp}\n`
       texto += `│ *Vistas:* ${views}\n`
       texto += `╰───────────────◯\n`
-      texto += `● Para descargar responde a este mensaje con *Video* o *Audio*.\n\n${readMore}📌 *Link:* ${url}`
+      texto += `● Para descargar responde a este mensaje con *Video* o *Audio*.\n${readMore}\n📌 *Link:* ${url}`
 
       /*if (!m.chat.group) {
         const single_select = [{ title: '', highlight_label: '', rows: [] }]

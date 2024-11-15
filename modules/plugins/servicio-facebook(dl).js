@@ -1,22 +1,41 @@
+import { igdl } from 'ruhend-scraper';
+
 const command = {
     command: ['facebook', 'fb'],
     categoria: ['servicio']
 }
 
 command.script = async (m, { conn }) => {
-    if (!m.text) return m.reply(`Ingrese el comando *\`.${m.command}\`* y seguido un enlace de *Tiktok*`)
-    m.react('wait')
+    if (!m.args[0]) {
+        return m.reply('*Ingresa un enlace de Facebook.*');
+    }
 
     try {
-        const Facebook = await conn.getJSON(`https://widipe.com/download/fbdl?url=${m.args[0]}`)
-        if (m.tag[0] == 'audio') {
-            if (Facebook.result?.audio) { await conn.sendMessage(m.chat.id, { audio: { url: Facebook.result.audio }, mimetype: 'audio/mpeg' }, { quoted: m }), m.react('done') } else return m.reply('Este video/imagen no tiene ningun audio.')
-        }
-        else if (Facebook.result?.Normal_video) {
-            if (Facebook.result?.Normal_video) { await conn.sendButton(m.chat.id, [null, null, global.botName], ['video:url', Facebook.result.Normal_video], [{ name: 'reply', button: ['Send Audio ?', '.facebook ' + m.args[0] + ' tag=audio'] }], m), m.react('done') }
-        } else return m.reply('-_-')
-    } catch (e) { console.log(e); m.react('error') }
-}
+        await m.react('wait');
 
+        const res = await igdl(m.args[0]);
+        if (!res || !res.data || res.data.length === 0) {
+            await m.react('error');
+            return m.reply('*No se encontraron resultados.*');
+        }
+
+        let data = res.data.find(i => i.resolution === "720p (HD)") || res.data.find(i => i.resolution === "360p (SD)");
+        if (!data) {
+            await m.react('error');
+            return m.reply('*No se encontró una resolución adecuada.*')
+        }
+
+        let video = data.url;
+
+        await m.react('wait');
+        await conn.sendMessage(m.chat.id, { video: { url: video }, caption: '', fileName: 'fb.mp4', mimetype: 'video/mp4' }, { quoted: m });
+
+        await m.react('done');
+    } catch (e) {
+        console.log(e);
+        await m.react('error');
+        return m.reply('*Error al enviar el video.*');
+    }
+};
 
 export default command
