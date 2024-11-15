@@ -14,7 +14,7 @@ command.script = async (m, { conn }) => {
 
     const arg = m.args[0].toLowerCase();
 
-    const editsAnimeDB = JSON.parse(fs.readFileSync(path.resolve('./lib/editsAnime.json')));
+    const editsAnimeDB = JSON.parse(fs.readFileSync(path.resolve('./imagenes/anime/editsAnime.json')));
 
     let edits;
 
