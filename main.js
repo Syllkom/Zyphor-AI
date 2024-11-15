@@ -35,9 +35,9 @@ try {
     global.Syllkom = 'https://beacons.ai/Syllkom'
     global.CanalZp = 'https://whatsapp.com/channel/0029VaiYDdB89inkuoRbEV13'
     global.TextBot = 'Powered by @Syllkom'
-    global.BotName = '@ZyphorBot'
+    global.BotName = '@ZyphorAI'
     global.ptn = '●'
-    global.author = '○ Zyphor-Bot - 𝟸𝟺/𝟽'
+    global.author = '○ Zyphor-AI - 𝟸𝟺/𝟽'
     global.desc = 'WhatsApp Easy Chat Assistant'
     global['@config'] = config;
     let store;
