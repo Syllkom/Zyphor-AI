@@ -71,7 +71,7 @@ ${readMore}
 
     await conn.sendMessage(m.chat.id, {
         document: Buffer.alloc(5),
-        fileName: '@Zyphor-AI,
+        fileName: 'Zyphor AI',
         mimetype: 'video/mp4', //'application/pdf',
         jpegThumbnail: image,
         caption: menu,
