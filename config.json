@@ -1,0 +1,58 @@
+{
+  "dataStorage": {
+    "database": {
+      "active": true,
+      "fileName": "dataBase",
+      "interval": 120000
+    },
+    "store": {
+      "active": true,
+      "fileName": "Baileys",
+      "interval": 240000
+    }
+  },
+  "botConfig": {
+    "owner": "51933479416",
+    "nameBot": "ZyphorAI",
+    "numeroBot": "",
+    "prefix": ".¿?¡!#%&/,~@",
+    "tmpClear": 300000,
+    "autoRead": true,
+    "botModules": {
+      "coreDir": "modules",
+      "pluginsDir": "plugins",
+      "logicDir": "stubtype",
+      "evalScripts": {
+        "setupScript": "setupLogic.js",
+        "preScript": "BeforeData.js",
+        "postScript": "AfterData.js"
+      }
+    },
+    "reactions": {
+      "waiting": "⌛",
+      "success": "✅",
+      "failure": "❌"
+    },
+    "trustedUsers": {
+      "51933479416": {
+        "rowner": true,
+        "owner": true,
+        "modr": true,
+        "prem": true
+      }
+    }
+  },
+  "directorySetup": {
+    "system": "system",
+    "foldersToCreate": [
+      {
+        "baseDir": "./system",
+        "subfolders": [
+          "tmp",
+          "store",
+          "creds"
+        ]
+      }
+    ]
+  }
+}
