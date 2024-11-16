@@ -4,7 +4,7 @@ const command = {
 };
 
 command.script = async (m, { conn }) => {
-    const bot = `Hola, soy KazeBot, para ver la lista de comandos utiliza *#menu*, si desea interactuar con mi creador: *#owner*`;
+    const bot = `Hola, soy @ZyphorAI, para ver la lista de comandos utiliza */menu*, si desea interactuar con mi creador: */owner*`;
     m.reply(bot)
 }
     
