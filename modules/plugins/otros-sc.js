@@ -7,7 +7,7 @@ const command = {
 };
 
 command.script = async (m, { conn }) => {
-  const repoUrl = 'https://api.github.com/repos/Syllkom/Zyphor-AI';
+  const repoUrl = 'https://api.github.com/repos/Syllkom/ZyphorAI';
   
   try {
     const response = await axios.get(repoUrl, { timeout: 10000 });
