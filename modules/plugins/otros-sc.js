@@ -1,10 +1,10 @@
-import axios from 'axios';
-import moment from 'moment-timezone';
+import axios from 'axios'
+import moment from 'moment-timezone'
 
 const command = {
     command: ['sc', 'script'],
     categoria: ['main']
-};
+}
 
 command.script = async (m, { conn }) => {
   const repoUrl = 'https://api.github.com/repos/Syllkom/ZyphorAI';
@@ -69,6 +69,6 @@ command.script = async (m, { conn }) => {
     console.error('Error al obtener datos del repositorio:', error.message || error);
     m.reply(`Hubo un error al obtener la información del repositorio: ${error.message || error}`);
   }
-};
+}
 
-export default command;
+export default command
