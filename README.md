@@ -1,75 +1,117 @@
-
 <p align="center"> 
-<img src="https://komarev.com/ghpvc/?username=nansoffc&color=brightgreen" />
-<p/>
-<p align="center">
-<a href="https://github.com/nansoffc"><img title="Author" src="https://img.shields.io/badge/DyLux Bot-black?style=for-the-badge&logo=whatsApp"></a>
-<p/>
-<p align="center">
-<a href="https://github.com/nansoffc?tab=followers"><img title="Followers" src="https://img.shields.io/github/followers/nansoffc?label=Followers&style=social"></a>
-<a href="https://github.com/nanzone/nero-md/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/nansoffc/dylux-fg?&style=social"></a>
-<a href="https://github.com/nanzone/nero-md/network/members"><img title="Fork" src="https://img.shields.io/github/forks/nansoffc/dylux-fg?style=social"></a>
-<a href="https://github.com/nanzone/nero-md/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/nansoffc/dylux-fg?label=Watching&style=social"></a>
+<a href="https://github.com/Syllkom"><img src="http://readme-typing-svg.herokuapp.com?font=mono&size=17&duration=4000&color=F7B11B&center=falso&vCenter=falso&lines=🏮 XiaoBot-MD+; WhatsApp+simple+bot" height="90px"></a> 
 </p>
 
+<h1 align="center">‧ 🏮 XiaoBot - MD 🎐 ‧
+</p>
+<p>
 
+[![Zyphor-Logo.png](https://i.postimg.cc/vTbLwRtq/Zyphor-Logo.png)](https://postimg.cc/7GtTSWc0)
+<p align="center">
+        <a href="#"><img title="simple-whatsapp-bot" src="https://img.shields.io/badge/-SIMPLE--WHATSAPP--BOT-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+    </p>
+    <p>
+        <a href="https://github.com/Syllkom"><img title="Author"    src="https://img.shields.io/badge/Author-おSyllkom-red.svg?style=for-the-badge&logo=github"></a>
+    </p>
+    <p>
+        <a href="https://github.com/Syllkom"><img title="Followers" src="https://img.shields.io/github/followers/DyrKom?color=red&style=flat-square"></a>
+        <a href="https://github.com/Syllkom/XiaoBot-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
+        <a href="https://github.com/Syllkom/XiaBot-MD/network/members"><img title="Forks" src="http://img.shields.io/github/forks/Syllkom/XiaoBot-MD?color=red&style=flat-square"></a>
+        <a href="#"><img src="https://img.shields.io/badge/MANTENIMIENTO-SI-blue.svg"</a>
+        <img src="https://img.shields.io/github/repo-size/Syllkom/XiaoBot-MD" /> <br>
+   </p>
+   <p>
+</h1>
 
-<h3 align="center">WHATSAPP BOT</h3>
+## <img src="https://i0.wp.com/i230.photobucket.com/albums/ee124/joaclint/joaclint_istgud/ruedas.gif" alt="Herramientas" width="35" height="35"> Herramientas
 
-***
-### Información
-- Cambie número de dueño en [Config](https://github.com/nanzone/nero-md/blob/main/config.js#L6)
-- Puede cambiar a la última versión de baileys editando el package.json [esta sección](https://github.com/nanzone/nero-md/blob/main/package.json#L42)
-
-### FREE APIKEY
--  [click aquí](https://api.betabotz.eu.org)
-
-### Contoh 
-En caso de duda, antes de instalar nero-bot, pruebe el bot aquí
-
-[![WhatsApp](https://img.shields.io/badge/DyLux-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://instabio.cc/nansoffcf) 
-
-***
-
-#### Deploy to Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nanzone/nero-md)
-
-#### Heroku Buildpack
-| BuildPack | LINK |
-|--------|--------|
-| **FFMPEG** |[click](https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest) |
-| **IMAGEMAGICK** | [click](https://github.com/DuckyTeam/heroku-buildpack-imagemagick) |
-
-### TERMUX
-1. 
-```sh
-$ pkg upgrade -y && pkg update -y
-$ pkg install git -y
-$ pkg install nodejs -y
-$ pkg install ffmpeg -y
-$ pkg install imagemagick -y
-$ git clone https://github.com/nanzone/nero-md
-$ cd dylux-fg
-$ npm i 
-$ npm start
+```bash
+> Panel Host
+> WhatsApp
 ```
-2. Esperar a que se inicie el bot...
-3. Escanea el código QR desde el segundo dispositivo. (ir a whatsapp > Dispositivos Vinculados > Vincular un dispositivo)
+## `Instalación en Panel host`
+
+> Hostear XiaoBot-MD:
+
+1. **Entra a tu panel host**
+
+   Sube todos los archivos a tu panel hosting:
+   ```bash
+   Xiao.js
+   ```
+   ```bash
+   database.zip
+   ```
+   ```bash
+   settings.js
+   ```
+   ```bash
+   package-lock.json
+   ```
+   ```bash
+   package.json
+   ```
+   ```bash
+   index.js
+   ```
+   ```bash
+   module.js
+   ```
+   ```bash
+   lib.zip
+   ```
+   
+3. **Descomprime los archivos:**
+
+    ```bash
+   database.zip
+    ```
+    ```bash
+   lib.zip
+    ```
+    
+4. **Pon el número que será bot, mas el código de país pará obtener el código de emparejamiento**
+
+   Ejemplo:
+    ```bash
+   51933777999
+    ```
+
+5. **Listo ya tienes XiaoBot-MD en tu WhatsApp**
+
+   Recuerda actualizar la carpeta "XiaoSession" solo si es necesario. 
+    ```bash
+   XiaoSession
+    ```
+## <img src="https://i.pinimg.com/originals/73/69/6e/73696e022df7cd5cb3d999c6875361dd.gif" alt="Características" width="42" height="42"> Características
+
+> Bot en beta, con el tiempo añadiré mas comandos
+
+- [x] Configuración de grupo
+- [x] Setppgruop (actualizar img grupo)
+- [x] Setppbot (actualizar img perfil)
+- [x] antilink, antilink2
+- [x] Crear sticker de image/video/gif/url
+- [x] Smeme (añadir texto a sticker)
+- [x] NFS
+- [x] Download YouTube 144p - 1080p
+- [ ] Otros
+
+En caso de presentar algun error o duda, le invito a comunicármela para su pronta resolución.
+
+おSyllkom
+- [![WhatsApp Group](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/51933479416)
+
+## 🎐 Repo Stats 
+
+![github card](https://github-readme-stats.vercel.app/api/pin/?username=Syllkom&repo=XiaoBot-MD&theme=chartreuse-dark)
+
+## Créditos 
+<a href="https://github.com/Syllkom"><img src="https://github.com/Syllkom.png" width="100" height="100" alt="Syllkom"/></a>
 ---------
+<div align="center">
+  <h1 align="center">Creador y Propietario del Bot</h1>
 
+<a href="https://github.com/Syllkom"><img src="https://tinyurl.com/5n6pff2f" width="300" height="300" alt="おSyllkom"/></a>
 
-## BOXMINE
-
-<a href="https://dash.boxmineworld.com/register?ref=Mb0BN5ny"><img src="https://k.top4top.io/p_2413wh2bh0.jpg" width="450" height="230" alt="BoxMine"/></a>
-
-Instale el bot con un solo click! para que este activo 24/7
-
----------
-* Create una cuenta  [`aquí`](https://dash.boxmineworld.com/register?ref=Mb0BN5ny)
-* Tutorial [`Click Aquí`](https://youtu.be/xFqjKN1Qt80)
-
-* Dashboard [`Click aquí`](https://dash.boxmineworld.com)
-* Panel [`Click aquí`](https://panel.boxmineworld.com/)
-
----------
- 
+`© 2024 Anime & Onigiri All rights reserved`
