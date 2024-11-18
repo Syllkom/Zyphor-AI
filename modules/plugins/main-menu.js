@@ -47,6 +47,7 @@ ${readMore}
 │/tiktok
 │/tiktoksearch
 │/pinterest
+│/x (twitter)
 │/Instagram
 │/gimage
 │/gitclone
