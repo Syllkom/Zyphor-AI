@@ -1,5 +1,5 @@
-import speed from 'performance-now';
-import { exec } from 'child_process';
+import speed from 'performance-now'
+import { exec } from 'child_process'
 
 const command = {
     command: ['ping', 'speed', 'p'],
@@ -22,6 +22,6 @@ command.script = async (m, { conn }) => {
           const text = `*» Velocidad:* ${latencia.toFixed(4)} _ms_\n\n${systemInfo}`;
           m.reply(text);
     });
-};
+}
 
-export default command;
+export default command
