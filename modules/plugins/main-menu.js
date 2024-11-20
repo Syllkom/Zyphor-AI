@@ -60,6 +60,8 @@ ${readMore}
 │/sc *(script bot)*
 │/ping
 │/creador
+│/wallpaper
+│/couple
 ╰───────────────◯
 
 ╭╼◯ *\`Owner:\`*
@@ -70,25 +72,7 @@ ${readMore}
 ╰───────────────◯`
     await m.react('wait');
 
-    await conn.sendMessage(m.chat.id, {
-        document: Buffer.alloc(5),
-        fileName: 'Zyphor AI',
-        mimetype: 'video/mp4', //'application/pdf',
-        jpegThumbnail: image,
-        caption: menu,
-        contextInfo: {
-            mentionedJid: [m.sender.id],
-            externalAdReply: {
-                title: author,
-                body: desc,
-                thumbnail: mylogo,
-                renderLargerThumbnail: true,
-                showAdAttribution: true,
-                sourceUrl: CanalZp,
-                mediaType: 1,
-            }
-        }
-    });
+    await conn.sendMessage(m.chat.id, { document: Buffer.alloc(5), fileName: 'Zyphor AI', mimetype: 'video/mp4', jpegThumbnail: image, caption: menu, contextInfo: { mentionedJid: [m.sender.id], externalAdReply: { title: author, body: desc, thumbnail: mylogo, renderLargerThumbnail: true, showAdAttribution: true, sourceUrl: CanalZp, mediaType: 1, } } });
     
     await m.react('done');
     
