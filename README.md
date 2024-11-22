@@ -7,8 +7,8 @@
         <a href="#"><img title="WhatsApp Easy Chat Assistant" src="https://img.shields.io/badge/-WhatsApp Easy Chat Assistant-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
     </p>
     <p>
-            
-## Características del bot 
+
+## Características del bot:
 |  Contenido:  |                                           Si |
 | :---------------------------------------------: | :-----------: |
 | Simple commands|✔️|
