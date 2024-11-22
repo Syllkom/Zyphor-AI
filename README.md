@@ -7,17 +7,16 @@
         <a href="#"><img title="WhatsApp Easy Chat Assistant" src="https://img.shields.io/badge/-WhatsApp Easy Chat Assistant-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
     </p>
     <p>
-
-## Commands:
-
-- [x] Facebook 
-- [x] Instagram 
-- [x] YouTube 
-- [x] Tiktok 
-- [x] Pinterest 
-- [x] X (Twitter)
-- [x] Wikipedia
-- [x] Remini 
+            
+## Características del bot 
+|  Contenido:  |                                           Si |
+| :---------------------------------------------: | :-----------: |
+| Simple commands|✔️|
+| Crea stickers|✔️|
+| Anti-Link|✔️|
+| Anime|✔️|
+| Remini/HD imagen|✔️|
+| Descarga de música/videos|✔️|
 
 En caso de presentar algun error o duda, le invito a comunicármela para su pronta resolución:
 
