@@ -2,124 +2,61 @@ import fs from 'fs'
 import path from 'path'
 
 const command = {
-    command: ['anime', 'animes', 'hentai', 'henatis', 'animeslatino'],
+    command: ['anime', 'animes', 'animel', 'animesl'],
     categoria: ['servicio']
 }
 
 const _Image = {
-    anime: [
-        "https://img2.wallspic.com/crops/4/6/9/1/4/141964/141964-novela_visual-espacio-3840x2160.jpg",
-        "https://img2.wallspic.com/crops/1/3/6/3/4/143631/143631-ambiente-castillo-arte-pintura_acuarela-lienzo-3840x2160.jpg",
-        "https://img2.wallspic.com/crops/4/0/1/1/7/171104/171104-anime-arte-ilustracion-artista-edificio-3840x2160.jpg",
-        "https://images.wallpaperscraft.com/image/single/girl_silhouette_planet_1067694_3840x2160.jpg"
-    ],
-    hentai: ['https://wp.youtube-anime.com/s4.anilist.co/file/anilistcdn/media/manga/banner/99472-r0vPFL45SK0N.jpg']
+    anime: ['https://pomf2.lain.la/f/89jeyr4x.png']
 }
-
-
-const getRandom = (Array) => Array[Math.floor(Math.random() * Array.length)]
+const getRandom = (Array) => Array[Math.floor(Math.random() * Array.length)];
 
 command.script = async (m, { conn }) => {
-    const animeDB = JSON.parse(fs.readFileSync(path.resolve('./lib/animeDB.json')))
-    if (m.command == 'hentais' || m.command == 'hentai') {
-        const animes = animeDB.hentais;
-        const AnimList = Object.keys(animes).map(key => ({ name: key, ...animes[key] })).sort((a, b) => Object.values(a.capitulos).length - Object.values(b.capitulos).length)
-        let single_select = [{ title: '', highlight_label: '', rows: [] }];
+    const animeDB = JSON.parse(fs.readFileSync(path.resolve('./imagenes/animes/animeDB.json')));
+    const isLatino = m.command === 'animel' || m.command === 'animesl';
+    const animes = isLatino ? animeDB.animes_latino : animeDB.animes;
+    const idioma = isLatino ? 'Español Latino' : 'Sub Español';
+    const AnimList = Object.keys(animes).map(key => ({ name: key, ...animes[key] })).sort((a, b) => Object.values(a.capitulos).length - Object.values(b.capitulos).length);
+    let single_select = [{ title: '', highlight_label: '', rows: [] }];
 
-        if (m.tag.length < 1) {
-            await m.react('wait')
-            try {
-                single_select = AnimList.map(anime => ({ title: '', highlight_label: Object.values(anime.capitulos).length === anime.cap_total ? '' : 'Emisión', rows: [{ header: anime.name.split('_').join(' '), title: `Capítulos: ${Object.values(anime.capitulos).length}/${anime.cap_total}. Temporada: ${anime.temporada}`, description: anime.clasificacion, id: `.hentai tag=${anime.name} tag=anime` }] }));
-                await conn.sendButton(m.chat.id, ['Hola!', '', global.botName], ['image:url', getRandom(_Image.hentai)], [{ name: 'single_select', button: ['Animes', single_select] }], m);
+    if (m.tag.length < 1) {
+        await m.react('wait');
+        try {
+            single_select = AnimList.map((anime, index) => ({
+                text: `[ \`${index + 1}\` ] *${anime.name.split('_').join(' ')}*\nCapítulos: ${Object.values(anime.capitulos).length}/${anime.cap_total}. Temporada: ${anime.temporada}`,
+                assign: { [`${index + 1}`]: { command: `.${isLatino ? 'animel' : 'anime'} tag=${anime.name} tag=${isLatino ? 'animel' : 'anime'}` } }
+            }));
+            const assign = { user: 'all', response: {} };
+            for (let i = 0; i < single_select.length; i++) Object.assign(assign.response, single_select[i].assign);
 
-                await m.react('done')
-            } catch (e) { await m.react('error') }
-        } else if (m.tag[1] === 'hentai') {
-            if (animes[m.tag[0]]) {
-                await m.react('wait')
-                try {
-                    const anime = animes[m.tag[0]];
-                    single_select[0].title = anime.title;
-                    const capitulos = Object.values(anime.capitulos);
-                    for (let i = 0; i < capitulos.length; i++) { single_select[0].rows.push({ header: '', title: `Capítulo ${i + 1} | Sub Español`, description: '', id: `.hentai tag=${m.tag[0]} tag=capitulo tag=${i + 1}` }) }
-                    await conn.sendButton(m.chat.id, [anime.title, 'Capítulos: ' + capitulos.length + '/' + anime.cap_total + '\n\n' + anime.sinopsis, '' + anime.clasificacion], ['image:url', anime.imagen], [{ name: 'single_select', button: ['Animes', single_select] }], m);
-                    await m.react('done')
-                } catch (e) { await m.react('error') }
-            }
-        } else if (m.tag[1] === 'capitulo') {
-            await m.react('wait')
+            conn.saveMessageIdForResponse(await conn.sendMessage(m.chat.id, { image: { url: getRandom(_Image.anime) }, caption: single_select.map((o) => o.text).join('\n\n') }), assign);
+            await m.react('done');
+        } catch (e) { await m.react('error'); console.error(e); }
+    } else if (m.tag[1] === (isLatino ? 'animel' : 'anime')) {
+        if (animes[m.tag[0]]) {
+            await m.react('wait');
             try {
-                const anime = animes[m.tag[0]];
-                await conn.sendMessage(m.chat.id, { document: { url: anime.capitulos['' + m.tag[2]] }, caption: `Capítulo ${m.tag[2]} | Sub Español. ${anime.title}.`, mimetype: 'video/mp4', fileName: `${anime.title}. Capítulo ${m.tag[2]}. Sub Español.mp4` }, { quoted: m });
-                await m.react('done')
-            } catch (e) { await m.react('error') }
+                const anime = animes[m.tag[0]], capitulos = Object.values(anime.capitulos);
+                single_select = capitulos.map((anime, index) => ({
+                    text: `[ \`${index + 1}\` ]. Capítulo \`${index + 1}\` | ${idioma}`,
+                    assign: { [`${index + 1}`]: { command: `.${isLatino ? 'animel' : 'anime'} tag=${m.tag[0]} tag=capitulo tag=${index + 1}` } }
+                }));
+                const assign = { user: 'all', response: {} };
+                for (let i = 0; i < single_select.length; i++) Object.assign(assign.response, single_select[i].assign);
+
+                conn.saveMessageIdForResponse(await conn.sendMessage(m.chat.id, { image: { url: anime.imagen }, caption: '*' + anime.title + '*\n\nCapítulos: ' + capitulos.length + '/' + anime.cap_total + '\nClasificación: ' + anime.clasificacion + '\n\n' + (anime.sinopsis ? anime.sinopsis + '\n\n' : '') + single_select.map((o) => o.text).join('\n\n') }), assign);
+                await m.react('done');
+            } catch (e) { await m.react('error'); console.error(e); }
         }
-    } else if (m.command == 'animeslatino') {
-        const animes = animeDB.animes_latino;
-        let single_select = [{ title: '', highlight_label: '', rows: [] }];
+    } else if (m.tag[1] === 'capitulo') {
+        await m.react('wait');
+        try {
+            const anime = animes[m.tag[0]], videoUrl = anime.capitulos['' + m.tag[2]], jpegThumbnail = await conn.resizePhoto({ image: anime.imagen, scale: 140, result: 'base64' });
 
-        if (m.tag[1] === 'anime') {
-            if (animes[m.tag[0]]) {
-                await m.react('wait')
-                try {
-                    const anime = animes[m.tag[0]];
-                    single_select[0].title = anime.title;
-                    const capitulos = Object.values(anime.capitulos);
-                    for (let i = 0; i < capitulos.length; i++) { single_select[0].rows.push({ header: '', title: `Capítulo ${i + 1} | Español Latino`, description: '', id: `.animeslatino tag=${m.tag[0]} tag=capitulo tag=${i + 1}` }) }
-
-                    await conn.sendButton(m.chat.id, [anime.title, 'Capítulos: ' + capitulos.length + '/' + anime.cap_total + '\n\n' + anime.sinopsis, '' + anime.clasificacion], ['image:url', anime.imagen], [{ name: 'single_select', button: ['Capítulos', single_select] }], m);
-                    await m.react('done')
-                } catch (e) { console.log(e), await m.react('error') }
-            }
-        } else if (m.tag[1] === 'capitulo') {
-            await m.react('wait')
-            try {
-                const anime = animes[m.tag[0]];
-                await conn.sendMessage(m.chat.id, { document: { url: anime.capitulos['' + m.tag[2]] }, caption: `Capítulo ${m.tag[2]} | Español Latino. ${anime.title}.`, mimetype: 'video/mp4', fileName: `${anime.title}. Capítulo ${m.tag[2]}. Español Latino.mp4` }, { quoted: m });
-                await m.react('done')
-            } catch (e) { await m.react('error') }
-        }
-    } else {
-        const animes = animeDB.animes;
-        const AnimList = Object.keys(animes).map(key => ({ name: key, ...animes[key] })).sort((a, b) => Object.values(a.capitulos).length - Object.values(b.capitulos).length)
-        let single_select = [{ title: '', highlight_label: '', rows: [] }];
-
-        const animesLatino = animeDB.animes_latino;
-        const AnimListLatino = Object.keys(animesLatino).map(key => ({ name: key, ...animesLatino[key] })).sort((a, b) => Object.values(a.capitulos).length - Object.values(b.capitulos).length)
-        let single_selectLatino = [{ title: '', highlight_label: '', rows: [] }];
-
-        if (m.tag.length < 1) {
-            await m.react('wait')
-            try {
-                single_select = AnimList.map(anime => ({ title: '', highlight_label: Object.values(anime.capitulos).length === anime.cap_total ? '' : 'Emisión', rows: [{ header: anime.name.split('_').join(' '), title: `Capítulos: ${Object.values(anime.capitulos).length}/${anime.cap_total}. Temporada: ${anime.temporada}`, description: anime.clasificacion, id: `.anime tag=${anime.name} tag=anime` }] }));
-
-                single_selectLatino = AnimListLatino.map(anime => ({ title: '', highlight_label: Object.values(anime.capitulos).length === anime.cap_total ? '' : 'Emisión', rows: [{ header: anime.name.split('_').join(' '), title: `Capítulos: ${Object.values(anime.capitulos).length}/${anime.cap_total}. Temporada: ${anime.temporada}`, description: anime.clasificacion, id: `.animeslatino tag=${anime.name} tag=anime` }] }));
-
-                await conn.sendButton(m.chat.id, ['Hola!', 'Aquí podrás encontrar algunos de los animes que se han añadido a este bot.', global.botName], ['image:url', getRandom(_Image.anime)], [{ name: 'single_select', button: ['Animes | Sub español', single_select] }, { name: 'single_select', button: ['Animes | Español Latino', single_selectLatino] }], m);
-
-                await m.react('done')
-            } catch (e) { await m.react('error') }
-        } else if (m.tag[1] === 'anime') {
-            if (animes[m.tag[0]]) {
-                await m.react('wait')
-                try {
-                    const anime = animes[m.tag[0]];
-                    single_select[0].title = anime.title;
-                    const capitulos = Object.values(anime.capitulos);
-                    for (let i = 0; i < capitulos.length; i++) { single_select[0].rows.push({ header: '', title: `Capítulo ${i + 1} | Sub Español`, description: '', id: `.anime tag=${m.tag[0]} tag=capitulo tag=${i + 1}` }) }
-                    await conn.sendButton(m.chat.id, [anime.title, 'Capítulos: ' + capitulos.length + '/' + anime.cap_total + '\n\n' + anime.sinopsis, '' + anime.clasificacion], ['image:url', anime.imagen], [{ name: 'single_select', button: ['Capítulos', single_select] }], m);
-                    await m.react('done')
-                } catch (e) { await m.react('error') }
-            }
-        } else if (m.tag[1] === 'capitulo') {
-            await m.react('wait')
-            try {
-                const anime = animes[m.tag[0]];
-                await conn.sendMessage(m.chat.id, { document: { url: anime.capitulos['' + m.tag[2]] }, caption: `Capítulo ${m.tag[2]} | Sub Español. ${anime.title}.`, mimetype: 'video/mp4', fileName: `${anime.title}. Capítulo ${m.tag[2]}. Sub Español.mp4` }, { quoted: m });
-                await m.react('done')
-            } catch (e) { await m.react('error') }
-        }
+            conn.saveMessageIdForResponse(await conn.sendMessage(m.chat.id, { document: { url: videoUrl }, mimetype: 'video/mp4', fileName: `${anime.title}. Capítulo ${m.tag[2]}. ${idioma}.mp4`, jpegThumbnail: jpegThumbnail, caption: `Capítulo ${m.tag[2]} | ${idioma}. ${anime.title}.` }, { quoted: m }));
+            await m.react('done');
+        } catch (e) { await m.react('error'); console.error(e); }
     }
 }
 
-export default command;
+export default command

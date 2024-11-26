@@ -7,69 +7,74 @@ command.script = async (m, { conn }) => {
     const image = await conn.resizePhoto({ image: await m.chat.photo(), scale: 360, result: 'base64' })
     const imagechat = await m.chat.photo()
     const SabiasQue = SabiasQueData[Math.floor(Math.random() * SabiasQueData.length)];
-    const menu = `╭╼◯ \`\`\`Zyphor - Bot\`\`\`
+    const menu = `╭ ✦ \`\`\`Zyphor - Bot\`\`\`
 │ *User:* @${m.sender.number}
 │ *Activo:* ${timeString(process.uptime())}
 │ *Versión:* undefined
 │ *Type:* plugin
 │ *Creador:* @Syllkom
-╰───────────────◯
+╰─────────────◯
 
 *● ¿Sabías qué?* ${SabiasQue}
 ${readMore}
 *☲ Menu de comandos:*
 
-╭╼◯ *\`Grupos:\`*
-│/setpdesc group
-│/setppname group
-│/getinfo
-│/setpdesc
-│/setpsuject
-│/settings
-│/hidetag
-│/invocar
-│/ban
-│/allban (❗)
-╰───────────────◯
+╭ ✦ *</Grupos>*
+╵/getinfo
+╵/hidetag
+╵/invocar
+╵/ban
+╵/allban (❗)
+╰╶╴──────╶╴─╶╴◯
 
-╭╼◯ *\`Conversor:\`*
-│/sticker
-│/hd
-│/voz
-│/translate
-│/tinyurl
-╰───────────────◯
+╭ ✦ *</Conversor>*
+╵/sticker
+╵/hd
+╵/voz
+╵/translate
+╵/tinyurl
+╰╶╴──────╶╴─╶╴◯
 
-╭╼◯ *\`Media:\`*
-│/play
-│/yts
-│/ytmp
-│/tiktok
-│/tiktoksearch
-│/pinterest
-│/x (twitter)
-│/Instagram
-│/gimage
-│/gitclone
-│/wikipedia
-╰───────────────◯
+╭ ✦ *</Downloader>*
+╵/play
+╵/ytmp3
+╵/ytmp4
+╵/tiktok
+╵/pinterest
+╵/x (twitter)
+╵/Instagram
+╵/gitclone
+╵/mediafire
+╰╶╴──────╶╴─╶╴◯
 
-╭╼◯ *\`Otros:\`*
-│/edit *<anime|phonk>*
-│/IA
-│/sc *(script bot)*
-│/ping
-│/creador
-│/wallpaper
-│/couple
-╰───────────────◯
+╭ ✦ *</Search>*
+╵/tiktoksearch
+╵/gimage
+╵/wallpaper
+╵/wikipedia
+╵/sound1 (1-161)
+╰╶╴──────╶╴─╶╴◯
 
-╭╼◯ *\`Owner:\`*
-│/setpphoto
-│/setpphoto group
-│/setppname bot
-│/join
-╰───────────────◯`
+╭ ✦ *</Anime>*
+╵/animes (🎌 Sub)
+╵/animel (🇲🇽 Español)
+╵/hentai
+╵/edit <anime|phonk>
+╵/couple
+╰╶╴──────╶╴─╶╴◯
+
+╭ ✦ *</Otros>*
+╵/sc (script bot)
+╵/ping
+╵/creador
+╰╶╴──────╶╴─╶╴◯
+
+╭ ✦ *</Owner>*
+╵/setpphoto
+╵/setpphoto group
+╵/setppname bot
+╵/join
+╰╶╴──────╶╴─╶╴◯`
     await m.react('wait');
 
     await conn.sendMessage(m.chat.id, { document: Buffer.alloc(5), fileName: 'Zyphor AI', mimetype: 'video/mp4', jpegThumbnail: image, caption: menu, contextInfo: { mentionedJid: [m.sender.id], externalAdReply: { title: author, body: desc, thumbnail: mylogo, renderLargerThumbnail: true, showAdAttribution: true, sourceUrl: CanalZp, mediaType: 1, } } });
