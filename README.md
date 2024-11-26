@@ -13,8 +13,9 @@
 | :---------------------------------------------: | :-----------: |
 | Simple commands|✔️|
 | Crea stickers|✔️|
-| Anti-Link|✔️|
-| Anime|✔️|
+| Mediafire|✔️|
+| Anime Sub español - Doblaje|✔️|
+| Hentai - Sub Español|✔️|
 | Remini/HD imagen|✔️|
 | Descarga de música/videos|✔️|
 
