@@ -14,9 +14,12 @@
 | Simple commands|✔️|
 | Crea stickers|✔️|
 | Mediafire|✔️|
+| Mega|✔️|
+| Spotify|✔️|
+| Google Drive|✔️|
 | Anime Sub español - Doblaje|✔️|
 | Hentai - Sub Español|✔️|
-| Remini/HD imagen|✔️|
+| HD converter imagen/video|✔️|
 | Descarga de música/videos|✔️|
 
 En caso de presentar algun error o duda, le invito a comunicármela para su pronta resolución:
