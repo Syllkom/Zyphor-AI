@@ -6,7 +6,7 @@ import path from 'path';
 import { performance } from 'perf_hooks';
 
 const command = {
-    command: ['getinfo', 'geti', 'getinformacion'],
+    command: ['getinfo', 'geti', 'getinformacion', 'info'],
     categoria: ['grupos']
 }
 

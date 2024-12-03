@@ -9,7 +9,7 @@ const command = {
 command.script = async (m, { conn }) => {
     if (!m.args[0]) return m.reply(`Ejemplo: ${command.command[0]} <anime|phonk>`);
 
-    const arg = m.args[0].toLowerCase(), editsAnimeDB = JSON.parse(fs.readFileSync(path.resolve('./imagenes/anime/editsAnime.json')));
+    const arg = m.args[0].toLowerCase(), editsAnimeDB = JSON.parse(fs.readFileSync(path.resolve('./imagenes/animes/animeEditsDB.json')));
     const edits = arg === 'anime' ? editsAnimeDB.edits_anime : arg === 'phonk' ? editsAnimeDB.edit_phonk : null;
 
     if (!edits) return m.reply(`Ejemplo: ${command.command[0]} <anime|phonk>`);

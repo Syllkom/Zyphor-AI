@@ -6,7 +6,7 @@ const command = {
 }
 
 command.script = async (m, { conn }) => {
-    if (!m.text) return m.reply(`Ingrese el comando *\`.${m.command}\`* y seguido un enlace de *Tiktok*`);
+    if (!m.text) return m.reply(`Ingrese el comando *\`/${m.command}\`* y seguido un enlace de *Tiktok*\nEjemplo: /${m.command} https://vm.tiktok.com/ZMh3TnkQp/`);
     m.react('wait');
 
     try {
@@ -20,7 +20,7 @@ command.script = async (m, { conn }) => {
             } else return m.reply('Este video/imagen no tiene ningun audio.');
         } else {
             if (TikTok.images) {
-                const url = TikTok.images, Texto = `- *Titulo:* ${TikTok.title}\n- *Usuario:* ${TikTok.author.nickname}\n- *Reproducciones:* \`${TikTok.play_count}\`\n- *Comentarios:* \`${TikTok.comment_count}\`\n- *Descargas:* \`${TikTok.download_count}\`\n- *Imagenes:* \`${url.length}\``;
+                const url = TikTok.images, Texto = `● *Videos:*\n- Titulo: ${TikTok.title}\n- Usuario: ${TikTok.author.nickname}\n- Reproducciones: \`${TikTok.play_count}\`\n- Comentarios: \`${TikTok.comment_count}\`\n- Descargas: \`${TikTok.download_count}\`\n- Imagenes: \`${url.length}\``;
                 const cards = await Promise.all(url.map(async (imgUrl, i) => ({
                     body: { text: `Imagen ${i + 1}` },
                     header: { title: TikTok.title, hasMediaAttachment: true, imageMessage: (await generateWAMessageContent({ image: { url: imgUrl } }, { upload: conn.waUploadToServer })).imageMessage },
@@ -33,11 +33,11 @@ command.script = async (m, { conn }) => {
                 }
 
                 const response = { audio: { command: `.${m.command} ${m.args[0]} tag=audio` }, mp3: { command: `.${m.command} ${m.args[0]} tag=audio` } };
-                conn.saveMessageIdForResponse(await conn.sendMessage(m.chat.id, { text: `\n- Responda enviando un mensaje diciendo *audio*, para enviar el audio. :)\n${readMore}\n` + Texto }, { quoted: m }), { user: 'all', response });
+                conn.saveMessageIdForResponse(await conn.sendMessage(m.chat.id, { text: `\n● Responda enviando un mensaje diciendo *audio*, para enviar el audio. :)\n${readMore}\n` + Texto }, { quoted: m }), { user: 'all', response });
             } else {
-                const Texto = `- *Titulo:* ${TikTok.title}\n- *Usuario:* ${TikTok.author.nickname}\n- *Reproducciones:* \`${TikTok.play_count}\`\n- *Comentarios:* \`${TikTok.comment_count}\`\n- *Descargas:* \`${TikTok.download_count}\``;
+                const Texto = `● *Videos:*\n- Titulo: ${TikTok.title}\n- Usuario: ${TikTok.author.nickname}\n- Reproducciones: \`${TikTok.play_count}\`\n- Comentarios: \`${TikTok.comment_count}\`\n- Descargas: \`${TikTok.download_count}\``;
                 const response = { audio: { command: `.${m.command} ${m.args[0]} tag=audio` }, mp3: { command: `.${m.command} ${m.args[0]} tag=audio` } };
-                conn.saveMessageIdForResponse(await conn.sendMessage(m.chat.id, { video: { url: TikTok.play }, caption: `\n- Responda enviando un mensaje diciendo *audio*, para enviar el audio. :)\n${readMore}\n` + Texto }, { quoted: m }), { user: 'all', response });
+                conn.saveMessageIdForResponse(await conn.sendMessage(m.chat.id, { video: { url: TikTok.play }, caption: `\n● Responda enviando un mensaje diciendo *audio*, para enviar el audio. :)\n${readMore}\n` + Texto }, { quoted: m }), { user: 'all', response });
             }
         }
     } catch (e) {

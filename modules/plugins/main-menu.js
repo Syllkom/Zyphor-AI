@@ -29,10 +29,12 @@ ${readMore}
 
 ╭ ✦ *</Conversor>*
 ╵/sticker
-╵/hd
+╵/hd (image)
+╵/hdvid (video)
 ╵/voz
 ╵/translate
 ╵/tinyurl
+╵/tourl
 ╰╶╴──────╶╴─╶╴◯
 
 ╭ ✦ *</Downloader>*
@@ -40,14 +42,18 @@ ${readMore}
 ╵/ytmp3
 ╵/ytmp4
 ╵/tiktok
+╵/tthd (tiktok HD)
 ╵/pinterest
 ╵/x (twitter)
 ╵/Instagram
 ╵/gitclone
 ╵/mediafire
+╵/mega
+╵/gdrive
 ╰╶╴──────╶╴─╶╴◯
 
 ╭ ✦ *</Search>*
+╵/ytsearch
 ╵/tiktoksearch
 ╵/gimage
 ╵/wallpaper
@@ -67,6 +73,8 @@ ${readMore}
 ╵/sc (script bot)
 ╵/ping
 ╵/creador
+╵/gpt4
+╵/txtimg
 ╰╶╴──────╶╴─╶╴◯
 
 ╭ ✦ *</Owner>*

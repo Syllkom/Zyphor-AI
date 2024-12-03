@@ -16,7 +16,7 @@ command.script = async (m, { conn }) => {
         await m.reply(caption);
         await conn.sendMessage(m.chat.id, { document: { url: link }, fileName: name, mimetype: mime, asDocument: true }, { quoted: m });
         await m.react('✅');
-    } catch (e) { console.error(e); await conn.reply(m.chat.id, `Error`); await m.react('error'); }
+    } catch (e) { console.error(e); await m.reply(`Error`); await m.react('error'); }
 }
 
 export default command

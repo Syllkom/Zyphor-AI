@@ -4,7 +4,7 @@ import moment from 'moment-timezone'
 const command = {
     command: ['sc', 'script'],
     categoria: ['main']
-{
+}
 
 command.script = async (m, { conn }) => {
     const repoUrl = 'https://api.github.com/repos/Syllkom/Zyphor-AI';

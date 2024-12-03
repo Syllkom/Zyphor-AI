@@ -9,7 +9,7 @@ command.script = async (m, { conn }) => {
     const type = m.SMS().message;
     if (!type['imageMessage']) {
         await m.react('❗')
-        return await m.reply('Por favor, vuelva a enviar el comando junto con una imagen o respondiendo a una.')
+        return await m.reply('¿Dónde está la imagen?')
     }
     let media = await conn.download();
     const Image = await remini(media, "enhance");

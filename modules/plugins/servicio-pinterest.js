@@ -20,7 +20,7 @@ command.script = async (m, { conn }) => {
 
         await conn.relayMessage(m.chat.id, msg.message, { messageId: msg.key.id });
     } catch (e) {
-        m.react(error)
+        m.react('error')
     }
 };
 
