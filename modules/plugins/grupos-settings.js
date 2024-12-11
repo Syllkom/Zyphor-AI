@@ -1,11 +1,11 @@
 const command = {
     command: ['settings', 'editsttgs'],
     categoria: ['grupos']
-};
+}
 
 command.script = async (m, { conn }) => {
-    const chatdata = await conn.data['@chats'][m.chat.id];
-    const { detect, antiLink, antiOnce, antiDelete } = chatdata.settings;
+    const chatdata = await conn.data['@chats'][m.chat.id]
+    const { detect, antiLink, antiOnce, antiDelete } = chatdata.settings
 
     if (!m.args[0]) {
         let response = '*[ SETTINGS DEL GRUPO ]*\n\n';
@@ -18,18 +18,18 @@ command.script = async (m, { conn }) => {
         return m.reply(response);
     }
 
-    const setting = m.args[0].toLowerCase();
-    const action = m.args[1]?.toLowerCase();
+    const setting = m.args[0].toLowerCase()
+    const action = m.args[1]?.toLowerCase()
 
     if (!['detect', 'antilink', 'antionce', 'antidelete'].includes(setting)) {
-        return m.reply('❌ Configuración no válida. Opciones: detect, antilink, antionce, antidelete.');
+        return m.reply('Configuración no válida. Opciones: detect, antilink, antionce, antidelete.')
     }
 
     if (!['on', 'off'].includes(action)) {
-        return m.reply('❌ Acción no válida. Usa `on` para activar o `off` para desactivar.');
+        return m.reply('Acción no válida. Usa `on` para activar o `off` para desactivar.')
     }
 
-    const isEnabled = action === 'on';
+    const isEnabled = action === 'on'
 
     if (setting === 'detect') {
         if (!m.chat.group) return m.sms('group');
@@ -54,15 +54,14 @@ command.script = async (m, { conn }) => {
     }
 
     try {
-        await conn.db.write();
-        m.react('done');
-        m.reply(`✅ Configuración actualizada: ${setting} está ahora ${isEnabled ? 'activado' : 'desactivado'}.`);
+        await conn.db.write()
+        m.react('done')
+        m.reply(`✅ Configuración actualizada: ${setting} está ahora ${isEnabled ? 'activado' : 'desactivado'}.`)
     } catch (e) {
-        console.error(e);
-        m.react('error');
-        m.reply('❌ Hubo un error al actualizar la configuración.');
+        console.error(e)
+        m.react('error')
+        m.reply('❌ Hubo un error al actualizar la configuración.')
     }
-};
+}
 
-export default command;
-=
+export default command
