@@ -6,11 +6,11 @@ const command = {
 command.script = async (m, { conn }) => {
     const image = await conn.resizePhoto({ image: await m.chat.photo(), scale: 360, result: 'base64' })
     const imagechat = await m.chat.photo()
-    const SabiasQue = SabiasQueData[Math.floor(Math.random() * SabiasQueData.length)];
+    const SabiasQue = SabiasQueData[Math.floor(Math.random() * SabiasQueData.length)]
     const menu = `╭ ✦ \`\`\`Zyphor - Bot\`\`\`
 │ *User:* @${m.sender.number}
 │ *Activo:* ${timeString(process.uptime())}
-│ *Versión:* undefined
+│ *Versión:* 0.3 (beta)
 │ *Type:* plugin
 │ *Creador:* @Syllkom
 ╰─────────────◯
@@ -46,19 +46,29 @@ ${readMore}
 ╵/pinterest
 ╵/x (twitter)
 ╵/Instagram
+╵/threads
 ╵/gitclone
 ╵/mediafire
 ╵/mega
 ╵/gdrive
+╵/apk
 ╰╶╴──────╶╴─╶╴◯
 
 ╭ ✦ *</Search>*
 ╵/ytsearch
+╵/lyrics
+╵/whatmusic
 ╵/tiktoksearch
 ╵/gimage
 ╵/wallpaper
 ╵/wikipedia
 ╵/sound1 (1-161)
+╰╶╴──────╶╴─╶╴◯
+
+╭ ✦ *</Stalker>*
+╵/ttstalk (Tiktok)
+╵/igstalk (Instagram)
+╵/ytstalk (YouTube)
 ╰╶╴──────╶╴─╶╴◯
 
 ╭ ✦ *</Anime>*
@@ -75,6 +85,7 @@ ${readMore}
 ╵/creador
 ╵/gpt4
 ╵/txtimg
+╵/gorevideo
 ╰╶╴──────╶╴─╶╴◯
 
 ╭ ✦ *</Owner>*
@@ -85,9 +96,9 @@ ${readMore}
 ╰╶╴──────╶╴─╶╴◯`
     await m.react('wait');
 
-    await conn.sendMessage(m.chat.id, { document: Buffer.alloc(5), fileName: 'Zyphor AI', mimetype: 'video/mp4', jpegThumbnail: image, caption: menu, contextInfo: { mentionedJid: [m.sender.id], externalAdReply: { title: author, body: desc, thumbnail: mylogo, renderLargerThumbnail: true, showAdAttribution: true, sourceUrl: CanalZp, mediaType: 1, } } });
+    await conn.sendMessage(m.chat.id, { document: Buffer.alloc(5), fileName: 'Zyphor AI', mimetype: 'video/mp4', jpegThumbnail: image, caption: menu, contextInfo: { mentionedJid: [m.sender.id], externalAdReply: { title: author, body: desc, thumbnail: mylogo, renderLargerThumbnail: true, showAdAttribution: true, sourceUrl: CanalZp, mediaType: 1, } } })
     
-    await m.react('done');
+    await m.react('done')
     
 }
 
@@ -98,7 +109,7 @@ function timeString(seconds) {
     const h = Math.floor((seconds % (3600 * 24)) / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor(seconds % 60);
-    return `${d ? d + ':' : ''}${h ? h + ':' : ''}${m ? m + ':' : ''}${s}`;
+    return `${d ? d + ':' : ''}${h ? h + ':' : ''}${m ? m + ':' : ''}${s}`
 }
 
 const SabiasQueData = [

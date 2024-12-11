@@ -1,45 +1,31 @@
-import got from 'got'
-
 const command = {
-    command: ['spotify', 'spotifydl'],
-    categoria: ['servicio']
-};
+  command: ['spotifydl', 'spotdl', 'spotify', 'sp'],
+  categoria: ['servicio']
+}
 
 command.script = async (m, { conn }) => {
-    if (!m.args[0]) return m.reply(`❌ Uso: ${m.command} <enlace de Spotify>\nEjemplo: ${m.command} https://open.spotify.com/track/2Tp8vm7MZIb1nnx1qEGYv5`);
+  if (!m.args[0]) {
+    return m.reply(`Por favor, ingrese un enlace de Spotify.\nEjemplo:\n/${m.command} https://open.spotify.com/track/2Tp8vm7MZIb1nnx1qEGYv5`)
+  }
 
-    const spotifyDl = async (url) => {
-        try {
-            const apiUrl = `https://api.agatz.xyz/api/spotifydl?url=${encodeURIComponent(url)}`;
-            const response = await got(apiUrl, { responseType: 'json' });
-            if (response.body.status !== 200) throw new Error('Error al obtener datos desde la API.');
-            const data = JSON.parse(response.body.data);
-            if (!data || !data.url_audio_v1) throw new Error('No se encontró un enlace de audio.');
-            return data;
-        } catch (error) {
-            throw new Error(error.message || 'Error al procesar la solicitud.');
-        }
-    };
-
-    try {
-        const spotifyData = await spotifyDl(m.args[0]);
-
-        const info = `${spotifyData.judul || 'No disponible'}\n\n` +
-                     `╭ ✦ *</Spotify>*\n` +
-                     `╵🎤 Artista: ${spotifyData.nama_channel || 'No disponible'}\n` +
-                     `╵⏱️ Duración: ${spotifyData.durasi || 'No disponible'} segundos\n` +
-                     `╵🔗 Audio: DowMp3\n` +
-                     `╰╶╴──────╶╴─╶╴◯\n\n` +
-                     `● *DowMp3:* ${spotifyData.url_audio_v1}`;
-
-        await m.react('wait');
-        await m.reply(info);
-        await conn.sendMessage(m.chat.id, { audio: { url: spotifyData.url_audio_v1 },  caption: '🎵 Aquí está tu audio.', mimetype: 'audio/mpeg' }, { quoted: m });
-        await m.react('done');
-    } catch (error) {
-        console.error('Error:', error);
-        m.reply(`❌ Error: ${error.message}`);
+  const url = `https://api.agatz.xyz/api/spotifydl?url=${encodeURIComponent(m.args[0])}`
+  try { const response = await conn.getJSON(url);
+    if (response.status !== 200 || !response.data) {
+      return m.reply('No se pudo obtener información para el enlace proporcionado.')
     }
+
+    const data = JSON.parse(response.data)
+    const caption = `● *${data.judul}*\n○ *Artista*: ${data.nama_channel}\n○ *Duración*: ${data.durasi} segundos`
+    
+    m.react('wait')
+    await conn.sendMessage( m.chat.id, { image: { url: data.gambar_kecil[0].url }, caption: caption }, { quoted: m } )
+    
+    await conn.sendMessage(m.chat.id, { audio: { url: data.url_audio_v1 }, contextInfo: { externalAdReply: { title: data.judul, body: data.nama_channel, thumbnailUrl: data.gambar_kecil[0].url, showAdAttribution: true, sourceUrl: CanalZp,  mediaType: 1 } }, mimetype: "audio/mp4", fileName: "audio.mp3" }, { quoted: m })
+    await m.react('done')
+  } catch (e) {
+    console.error(e)
+    m.reply('Hubo un error al procesar el enlace. Asegúrate de que sea un enlace válido de Spotify.')
+  }
 }
 
 export default command

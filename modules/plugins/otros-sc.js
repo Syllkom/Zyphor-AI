@@ -26,9 +26,9 @@ command.script = async (m, { conn }) => {
             tamaño: formatSize(repo.size)
         };
 
-        const mensaje = `╭╼◯ *Zyphor AI - Bot*\n│ *Fecha de creación:* ${info.fechaCreacion}\n│ *Última actualización:* ${info.fechaActualizacion}\n│ *Estrellas:* ${info.estrellas}\n│ *Forks:* ${info.forks}\n│ *Issues abiertas:* ${info.issues}\n│ *Lenguaje principal:* ${info.lenguaje}\n│ *Tamaño:* ${info.tamaño}\n╰───────────────◯`;
+        const mensaje = `╭ ✦ *</ZyphorAI - Bot>*\n╵Creación: \`${info.fechaCreacion}\`\n╵Actualización: \`${info.fechaActualizacion}\`\n╵Estrellas: \`${info.estrellas}\`\n╵Forks: \`${info.forks}\`\n╵Issues abiertas: \`${info.issues}\`\n╵Lenguaje: ${info.lenguaje}\n╵Tamaño: \`${info.tamaño}\`\n╰╶╴──────╶╴─╶╴◯`;
 
-        const RepoImg = 'https://pomf2.lain.la/f/ij83r5vd.png';
+        const RepoImg = 'https://files.catbox.moe/352d9n.jpg';
         await conn.sendMessage(m.chat.id, { image: { url: RepoImg }, caption: mensaje, mentions: [m.sender], contextInfo: { externalAdReply: { showAdAttribution: true, title: `${info.nombre}`, body: `${info.descripcion}`, mediaUrl: `${info.enlace}`, sourceUrl: `${info.enlace}`, thumbnail: icon, mediaType: 1 } } }, { quoted: m });
     } catch (error) { console.error('Error al obtener datos del repositorio:', error.message || error); m.reply(`Hubo un error al obtener la información del repositorio: ${error.message || error}`); }
 }
