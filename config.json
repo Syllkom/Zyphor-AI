@@ -12,7 +12,7 @@
     }
   },
   "botConfig": {
-    "owner": "51933479416",
+    "owner": "573113825327",
     "nameBot": "ZyphorAI",
     "numeroBot": "",
     "prefix": ".¿?¡!#%&/,~@",
@@ -34,7 +34,7 @@
       "failure": "❌"
     },
     "trustedUsers": {
-      "51933479416": {
+      "573113825327": {
         "rowner": true,
         "owner": true,
         "modr": true,
